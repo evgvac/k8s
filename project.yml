@@ -6,3 +6,5 @@ spec:
     containers:
         - name: container-apache
           image: httpd:latest
+          ports:
+            - containerPort: 80
