@@ -23,13 +23,13 @@ spec:
             - containerPort: 80
 
 ---
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
   name: my-autoscaling
 spec:
   scaleTargetRef:
-    apiVersion: apps/v2beta1v1
+    apiVersion: apps/v1
     kind: Deployment
     name: my-ewb-deployment-autoscaling
     minReplicas: 17
