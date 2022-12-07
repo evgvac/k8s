@@ -7,7 +7,7 @@ metadata:
     env: prod
     owner: adminevgvac
 spec:
-  replicas: 25
+  replicas: 29
   selector:
     matchLabels:
       project: mossad
