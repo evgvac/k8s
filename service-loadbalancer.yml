@@ -33,7 +33,7 @@ spec:
     project: kgb
   ports:
     - name: app-lissener
-      protocol: tcp
+      protocol: TCP
       port: 80
       targetPort: 80
   type: LoadBalancer
