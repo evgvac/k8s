@@ -1,20 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-ewb-deployment
+  name: my-ewb-deployment-replicas
   labels:
     app: my-k8s-application
+    env: prod
+    owner: adminevgvac
 spec:
+  replicas: 50
   selector:
     matchLabels:
-      project: kgb
+      project: cia
   template:
     metadata:
       labels:
-        project: kgb
+        project: cia
     spec:
       containers:
-        - name: kgb-web
+        - name: cia-web
           image: adv4000/k8sphp:version1
           ports:
             - containerPort: 80
