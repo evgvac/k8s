@@ -23,7 +23,7 @@ spec:
             - containerPort: 80
 
 ---
-apiVersion: autoscaling/v
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: my-autoscaling
