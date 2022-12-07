@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-ewb-deployment-autoscaling
+  name: my-ewb-deployment-autoscaling-1
   labels:
     app: my-k8s-application
     env: prod
@@ -23,7 +23,7 @@ spec:
             - containerPort: 80
 
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v
 kind: HorizontalPodAutoscaler
 metadata:
   name: my-autoscaling
@@ -31,7 +31,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: my-ewb-deployment-autoscaling
+    name: my-ewb-deployment-autoscaling-1
     minReplicas: 17
     maxReplicas: 25
     metrics:
