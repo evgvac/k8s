@@ -9,16 +9,16 @@ spec:
   selector:
     matchLabels:
       project: kgb
-    template:
-      metadata:
-        labels:
-          project: kgb
-      spec:
-        containers:
-          - name: kgb-web
-            image: adv4000/k8sphp:latest
-            ports:
-              - containerPort: 80
+  template:
+    metadata:
+      labels:
+        project: kgb
+    spec:
+      containers:
+        - name: kgb-web
+          image: adv4000/k8sphp:latest
+          ports:
+            - containerPort: 80
 
 ---
 apiVersion: v1
