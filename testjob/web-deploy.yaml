@@ -45,12 +45,12 @@ spec:
             periodSeconds: 10         # Периодичность запуска
             successThreshold: 2       # Кол-во успешных проверок для запуска
             timeoutSeconds: 3         # Таймаут между проверками
-            livenessProbe:            # Постоянная проверка
-              failureThreshold: 3     # Сколько проверок подрят может быть fail
-              httpGet:
-                path: /
-                port: 80
-              periodSeconds: 10
-              successThreshold: 1      # Сколько проверок для сброса счётчика fail
-              timeoutSeconds: 3
-              initialDelaySeconds: 10  # Через какое время, после запуска, можно запускать проверки
+          livenessProbe:            # Постоянная проверка
+            failureThreshold: 3     # Сколько проверок подрят может быть fail
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 10
+            successThreshold: 1      # Сколько проверок для сброса счётчика fail
+            timeoutSeconds: 3
+            initialDelaySeconds: 10  # Через какое время, после запуска, можно запускать проверки
