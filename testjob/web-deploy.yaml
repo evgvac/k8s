@@ -1,8 +1,8 @@
----                 # Создаём namespace для приложения
+---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: mindbox-space
+  name: mindbox-space           # Создаём namespace для приложения
 ---
 apiVersion: apps/v1
 kind: Deployment
