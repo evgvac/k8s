@@ -8,7 +8,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-project-for-mindbox
-  namespace: mindbox-space
+#  namespace: mindbox-space
   labels:
     app.kubernetes.io/name: depl
     app.kubernetes.io/component: web
