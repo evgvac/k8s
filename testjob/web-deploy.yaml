@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app.kubernetes.io/name: depl
+    appkubernetes.io/component: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: depl
+      app.kubernetes.io/component: web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: depl
+        app.kubernetes.io/component: web
+    spec:
+      containers:
+        - name: job-web
+          image: igorcodin/ktswebinar:1.0.4
+          ports:
+            - containerPort: 80
