@@ -1,13 +1,20 @@
+---                 # Создаём namespace для приложения
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mindbox-space
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-project-for-mindbox
+  namespace: mindbox-space
   labels:
     app.kubernetes.io/name: depl
     app.kubernetes.io/component: web
 spec:
-  replicas: 4
+  replicas: 4                   # Кол-во запущенных подов
+  progressDeadlineSeconds: 10   # максимальный время, допустимый для развертывания
   selector:
     matchLabels:
       app.kubernetes.io/name: depl
@@ -23,3 +30,10 @@ spec:
           image: gcr.io/google-samples/node-hello:1.0
           ports:
             - containerPort: 80
+          resources:
+            limits:
+              cpu: 1.0          # Указываем максимальное потребление CPU
+              memory: 128Mi
+            requests:
+              cpu: 100m         # Дальнейшее потребление ровное 100м, что эквивалентно 0.1 CPU
+              memory: 128Mi
