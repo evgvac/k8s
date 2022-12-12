@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web
+  name: web-project-for-mindbox
   labels:
     app.kubernetes.io/name: depl
-    appkubernetes.io/component: web
+    app.kubernetes.io/component: web
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app.kubernetes.io/name: depl
@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: job-web
-          image: igorcodin/ktswebinar:1.0.4
+          image: gcr.io/google-samples/node-hello:1.0
           ports:
             - containerPort: 80
