@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-nginx
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+    spec:
+      containers:
+      - image: nginx:1.16
+        name: nginx
+        ports:
+        - containerPort: 80
+        readinessProbe:           # Проверка работоспособности приложения
+          failureThreshold: 5     # Кол-во проверок
+          httpGet:                # Метод httpGet проверяет код ответа веб сервера  |
+            path: /               # Если он 200 или 3хх, то считается, что все в порядке  |
+            port: 80              #  Эта проверка выполняется до тех пор, пока не будет выполнено заданное на успех условие - successThreshold
+          periodSeconds: 10       # Периодичность запуска
+          successThreshold: 2     # Кол-во успешных проверок для запуска
+          timeoutSeconds: 3       # Таймаут между проверками
+        livenessProbe:            # Постоянная проверка
+          failureThreshold: 3     # Сколько проверок подрят может быть fail
+          httpGet:
+            path: /
+            port: 80
+          periodSeconds: 10
+          successThreshold: 1     # Сколько проверок для сброса счётчика fail
+          timeoutSeconds: 3
+          initialDelaySeconds: 10  # Через какое время, после запуска, можно запускать проверки
