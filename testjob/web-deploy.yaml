@@ -32,25 +32,8 @@ spec:
             - containerPort: 80
           resources:
             limits:
-              cpu: 0.5                # Указываем максимальное потребление CPU
+              cpu: 500m                # Указываем максимальное потребление CPU
               memory: 128Mi
             requests:
               cpu: 100m               # Дальнейшее потребление ровное 100м, что эквивалентно 0.1 CPU
               memory: 128Mi
-          readinessProbe:             # Проверка работоспособности приложения
-            failureThreshold: 5       # Кол-во проверок
-            httpGet:                  # Метод httpGet проверяет код ответа веб сервера  |
-              path: /                 # Если он 200 или 3хх, то считается, что все в порядке  |
-              port: 80                #  Эта проверка выполняется до тех пор, пока не будет выполнено заданное на успех условие - successThreshold
-            periodSeconds: 10         # Периодичность запуска
-            successThreshold: 2       # Кол-во успешных проверок для запуска
-            timeoutSeconds: 3         # Таймаут между проверками
-          livenessProbe:            # Постоянная проверка
-            failureThreshold: 3     # Сколько проверок подрят может быть fail
-            httpGet:
-              path: /
-              port: 80
-            periodSeconds: 10
-            successThreshold: 1      # Сколько проверок для сброса счётчика fail
-            timeoutSeconds: 3
-            initialDelaySeconds: 10  # Через какое время, после запуска, можно запускать проверки
