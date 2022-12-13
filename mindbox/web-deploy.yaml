@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: mindbox-deploy
     app.kubernetes.io/component: web
 spec:
-#  replicas: 2                      # Кол-во запускаемых подов
+  replicas: 4                      # Для старта запускаем на всех подах
   progressDeadlineSeconds: 10         # максимальный время, допустимый для развертывания
   selector:
     matchLabels:
