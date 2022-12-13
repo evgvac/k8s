@@ -26,7 +26,7 @@ spec:
             - containerPort: 80
           resources:
             limits:
-#              cpu: 500m                # Указываем максимальное потребление CPU
+              cpu: 500m                # Указываем максимальное потребление CPU
               memory: 128Mi
             requests:
               cpu: 100m               # Дальнейшее потребление ровное 100м, что эквивалентно 0.1 CPU
