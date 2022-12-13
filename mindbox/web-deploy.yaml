@@ -48,7 +48,7 @@ spec:
     object:
       describedObject:
         kind: Service
-        name: cpu
+        name: mindbox-hpa
       target:
         averageValue: 70
         type: AverageValue
