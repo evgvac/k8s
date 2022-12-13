@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: mindbox-hpa
+  name: web-project-for-mindbox
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: web-project-for-mindbox
+    name: hpa-mindbox
   minReplicas: 1
   maxReplicas: 4
   metrics:
