@@ -1,16 +1,24 @@
-apiVersion: autoscaling/v2
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: mindbox-space
+  name: depl
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: web-project-for-mindbox
+    name: depl
   minReplicas: 1
   maxReplicas: 4
   metrics:
   - type: Resource
     resource:
       name: cpu
-      targetAverageUtilization: 80
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: AverageValue
+        averageValue: 100Mi
