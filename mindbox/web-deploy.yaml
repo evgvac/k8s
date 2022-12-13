@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: mindbox-deploy
     app.kubernetes.io/component: web
 spec:
-  replicas: 2                      # Кол-во запускаемых подов
+#  replicas: 2                      # Кол-во запускаемых подов
   progressDeadlineSeconds: 10         # максимальный время, допустимый для развертывания
   selector:
     matchLabels:
@@ -26,7 +26,7 @@ spec:
             - containerPort: 80
           resources:
             limits:
-              cpu: "0.5"                # Указываем максимальное потребление CPU
+#              cpu: "0.5"                # Указываем максимальное потребление CPU
               memory: 128Mi
             requests:
               cpu: "0.1"               # Дальнейшее потребление ровное 100м, что эквивалентно 0.1 CPU
@@ -50,7 +50,7 @@ spec:
       target:
         type: Utilization
         averageUtilization: 70
-#  - type: Resource
+#  - type: Resource                   # Поскольку у памяти статичное потребление, её не м
 #    resource:
 #      name: memory
 #      target:
