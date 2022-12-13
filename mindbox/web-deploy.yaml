@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: mindbox-deploy
     app.kubernetes.io/component: web
 spec:
-  replicas: 4                      # Для старта запускаем на всех подах
+  replicas: 4                      # Для запуска приложения используем все POD
   progressDeadlineSeconds: 10         # максимальный тайм-аут, допустимый для развертывания
   selector:
     matchLabels:
@@ -27,10 +27,10 @@ spec:
           resources:
             limits:
               cpu: 500m                # Указываем максимальное потребление CPU
-              memory: 128Mi
+              memory: 128Mi            # Лимит на память
             requests:
               cpu: 100m               # Дальнейшее потребление ровное 100м, что эквивалентно 0.1 CPU
-              memory: 128Mi
+              memory: 128Mi           # Лимит на память
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -41,15 +41,15 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: mindbox-deploy
-  minReplicas: 1
-  maxReplicas: 4
+  minReplicas: 1                      # Минимальное кол-во POD
+  maxReplicas: 4                      # Максимальное кол-во POD
   metrics:
   - type: Resource
     resource:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 70        # С помощью этой метрики контроллер HPA будет поддерживать среднее использование модулей в целевом масштабировании на уровне 70 %
+        averageUtilization: 90        # С помощью этой метрики контроллер HPA будет поддерживать среднее использование модулей в целевом масштабировании на уровне 90 %
 #  - type: Resource                   # Поскольку у памяти статичное потребление, её не масштабируем
 #    resource:
 #      name: memory
