@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mindbox-web-project
+  name: mindbox-deploy
   labels:
     app.kubernetes.io/name: mindbox-deploy
     app.kubernetes.io/component: web
