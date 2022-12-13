@@ -3,30 +3,30 @@
 #kind: Namespace
 #metadata:
 #  name: mindbox-space                 # Создаём namespace для приложения
-#---
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-project-for-mindbox
 #  namespace: mindbox-space
   labels:
-    app.kubernetes.io/name: depl
+    app.kubernetes.io/name: mindbox-deploy
     app.kubernetes.io/component: web
 spec:
   replicas: 4                      # Кол-во запускаемых подов
   progressDeadlineSeconds: 10         # максимальный время, допустимый для развертывания
   selector:
     matchLabels:
-      app.kubernetes.io/name: depl
+      app.kubernetes.io/name: mindbox-deploy
       app.kubernetes.io/component: web
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: depl
+        app.kubernetes.io/name: mindbox-deploy
         app.kubernetes.io/component: web
     spec:
       containers:
-        - name: job-web
+        - name: mindbox-web
           image: gcr.io/google-samples/node-hello:1.0
           ports:
             - containerPort: 80
@@ -37,3 +37,28 @@ spec:
             requests:
               cpu: 100m               # Дальнейшее потребление ровное 100м, что эквивалентно 0.1 CPU
               memory: 128Mi
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mindbox-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: mindbox-deploy
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+#  - type: Resource
+#    resource:
+#      name: memory
+#      target:
+#        type: AverageValue
+#        averageValue: 128Mi
