@@ -44,14 +44,12 @@ spec:
   minReplicas: 1
   maxReplicas: 4
   metrics:
-  - type: Object
-    object:
-      describedObject:
-        kind: Service
-        name: mindbox-hpa
+  - type: Resource
+    resource:
+      name: cpu
       target:
-        averageValue: 70
-        type: AverageValue
+        type: Utilization
+        averageUtilization: 70
 #  - type: Resource
 #    resource:
 #      name: memory
