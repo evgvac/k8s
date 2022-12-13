@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/component: web
 spec:
   replicas: 4                      # Для старта запускаем на всех подах
-  progressDeadlineSeconds: 10         # максимальный время, допустимый для развертывания
+  progressDeadlineSeconds: 10         # максимальный тайм-аут, допустимый для развертывания
   selector:
     matchLabels:
       app.kubernetes.io/name: mindbox-deploy
@@ -49,7 +49,7 @@ spec:
       name: cpu
       target:
         type: Utilization
-        averageUtilization: 70
+        averageUtilization: 70        # С помощью этой метрики контроллер HPA будет поддерживать среднее использование модулей в целевом масштабировании на уровне 70 %
 #  - type: Resource                   # Поскольку у памяти статичное потребление, её не масштабируем
 #    resource:
 #      name: memory
