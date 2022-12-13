@@ -13,8 +13,7 @@ metadata:
     app.kubernetes.io/name: depl
     app.kubernetes.io/component: web
 spec:
-  minReplicas: 1                      # Кол-во запускаемых подов
-  maxReplicas: 4
+  replicas: 4                      # Кол-во запускаемых подов
   progressDeadlineSeconds: 10         # максимальный время, допустимый для развертывания
   selector:
     matchLabels:
