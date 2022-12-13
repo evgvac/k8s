@@ -44,12 +44,14 @@ spec:
   minReplicas: 1
   maxReplicas: 4
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
+  - type: Object
+    object:
+      describedObject:
+        kind: Service
+        name: cpu
       target:
+        averageValue: 70
         type: AverageValue
-        averageUtilization: 70
 #  - type: Resource
 #    resource:
 #      name: memory
