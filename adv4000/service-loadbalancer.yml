@@ -63,6 +63,6 @@ spec:
           path: "/"
           backend:
             service:
-              name: echo1
+              name: adv-project
               port:
                 number: 80
