@@ -50,5 +50,4 @@ spec:
         backend:
           service:
             name: adv-project
-            port:
-              name: http
+            port: 80
