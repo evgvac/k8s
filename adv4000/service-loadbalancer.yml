@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-web-dep
+  name: deploy-project
   labels:
     app: my-k8s-dep
 spec:
   replicas: 1
   selector:
     matchLabels:
-      project: kgb
+      project: deploy-project
   template:
     metadata:
       labels:
-        project: kgb
+        project: deploy-project
     spec:
       containers:
-        - name: kgb-web
+        - name: container-web
           image: httpd:stable
           ports:
             - containerPort: 80
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-single-pod-service
+  name: service-project
   labels:
     env: prod
     owner: adminevgvac
@@ -36,4 +36,4 @@ spec:
       protocol: TCP
       port: 80
       targetPort: 80
-  type: LoadBalancer
+#  type: LoadBalancer
