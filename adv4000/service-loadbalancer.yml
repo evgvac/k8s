@@ -24,9 +24,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  metadata:
-    labels:
-      app.kubernetes.io/name: adv-service
+  labels:
+    app.kubernetes.io/name: adv-service
 spec:
   selector:
     app.kubernetes.io/name: adv-deploy
