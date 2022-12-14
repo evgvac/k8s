@@ -33,20 +33,20 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-  type: LoadBalancer
-#---
-#apiVersion: networking.k8s.io/v1
-#kind: Ingress
-#metadata:
-#  name: adv-project
-#spec:
-#  rules:
-#  - http:
-#      paths:
-#      - path: /
-#        pathType: Prefix
-#        backend:
-#          service:
-#            name: adv-project
-#            port:
-#              name: http
+#  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: adv-project
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: adv-project
+            port:
+              name: http
