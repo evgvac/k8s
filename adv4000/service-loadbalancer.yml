@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kgb-web
-          image: tomcat:latest
+          image: httpd:stable
           ports:
             - containerPort: 80
 
