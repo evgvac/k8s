@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: adv-project
-          image: httpd:latest
+          image: gcr.io/google-samples/node-hello:1.0
           ports:
             - containerPort: 80
 ---
