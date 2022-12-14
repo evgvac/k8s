@@ -5,7 +5,7 @@ metadata:
   labels:
     app: my-k8s-dep
 spec:
-  replicas: 7
+  replicas: 1
   selector:
     matchLabels:
       project: kgb
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kgb-web
-          image: adv4000/k8sphp:latest
+          image: tomcat:latest
           ports:
             - containerPort: 80
 
