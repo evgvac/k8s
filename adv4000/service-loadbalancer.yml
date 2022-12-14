@@ -34,19 +34,19 @@ spec:
     - port: 80
       targetPort: 80
   type: ClusterIP
-#---
-#apiVersion: networking.k8s.io/v1
-#kind: Ingress
-#metadata:
-#  name: adv-project
-#spec:
-#  rules:
-#  - http:
-#      paths:
-#      - path: /
-#        pathType: Prefix
-#        backend:
-#          service:
-#            name: adv-project
-#            port:
-#              name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: adv-project
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: adv-project
+            port:
+              name: 80
