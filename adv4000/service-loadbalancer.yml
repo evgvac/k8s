@@ -56,7 +56,7 @@ metadata:
   name: adv-project
 spec:
   rules:
-  - host: echo1.example.com
+  - host: echo1.cluster.local
     http:
         paths:
         - pathType: Prefix
