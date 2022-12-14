@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-project
+  name: adv-deploy
   labels:
-    app: my-k8s-dep
+    app.kubernetes.io/name: adv-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      project: deploy-project
+      app.kubernetes.io/name: adv-deploy
   template:
     metadata:
       labels:
-        project: deploy-project
+        app.kubernetes.io/name: adv-deploy
     spec:
       containers:
-        - name: container-web
-          image: httpd:latest
+        - name: adv-deploy
+          image: weaveworksdemos/shipping:0.4.8
           ports:
             - containerPort: 80
 
@@ -24,16 +24,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-project
-  labels:
-    env: prod
-    owner: adminevgvac
+  metadata:
+    labels:
+      app.kubernetes.io/name: adv-service
 spec:
   selector:
-    project: kgb
+    app.kubernetes.io/name: adv-deploy
   ports:
-    - name: app-lissener
-      protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 80
 #  type: LoadBalancer
