@@ -36,4 +36,4 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    project: cccp
+    project: prod

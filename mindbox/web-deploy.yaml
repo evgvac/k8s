@@ -56,3 +56,17 @@ spec:
 #      target:
 #        type: AverageValue
 #        averageValue: 128Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mindbox-deploy
+  labels:
+    app.kubernetes.io/name: mindbox-deploy
+spec:
+  selector:
+    app.kubernetes.io/name: mindbox-deploy
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
