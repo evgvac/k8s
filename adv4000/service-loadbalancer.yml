@@ -45,8 +45,8 @@ spec:
   rules:
   - http:
       paths:
-      - path: /
-        pathType: Prefix
+      - paths: #/
+#        pathType: Prefix
         backend:
           service:
             name: adv-project
