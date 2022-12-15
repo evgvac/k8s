@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: adv-project
-          image: httpd:latest
+          image: adv4000/k8sphp:latest
           ports:
             - containerPort: 80
 ---
@@ -33,24 +33,21 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-#  type: LoadBalancer
+  type: LoadBalancer
 ---
 apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: adv-project
-#  namespace: foo
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: k8s.int.kronshtadt.ru
-      http:
-        paths:
-          - pathType: Prefix
-            backend:
-              service:
-                name: adv-project
-                port:
-                  number: 80
-            path: /
-
+  kind: Ingress
+  metadata:
+    name: adv-project
+  spec:
+    rules:
+      - host: k8s.int.kronshtadt.ru
+        http:
+          paths:
+            - pathType: Prefix
+              backend:
+                service:
+                  name: adv-project
+                  port:
+                    number: 80
+              path: /
