@@ -39,30 +39,18 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: adv-project
+#  namespace: foo
 spec:
+  ingressClassName: nginx
   rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: adv-project
-            port:
-              name: http
-#              number: 80
-#apiVersion: networking.k8s.io/v1
-#kind: Ingress
-#metadata:
-#  name: adv-project
-#spec:
-#  rules:
-#  - host: echo1.cluster.local
-#    http:
-#        paths:
-#        - pathType: Prefix
-#          path: "/"
-#          backend:
-#            service:
-#              name: adv-project
-#              port:
+    - host: k8s.int.kronshtadt.ru
+      http:
+        paths:
+          - pathType: Prefix
+            backend:
+              service:
+                name: adv-project
+                port:
+                  number: 80
+            path: /
+
