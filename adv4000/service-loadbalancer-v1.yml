@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: adv-project-v1
-          image: adv4000/k8sphp:latest
+          image: adv4000/k8sphp:version1
           ports:
             - containerPort: 80
 ---
