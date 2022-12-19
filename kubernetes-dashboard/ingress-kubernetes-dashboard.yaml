@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
- name: ingress-dashboard
+ name: metrics-server
  namespace: kube-system
  annotations:
    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
@@ -23,6 +23,6 @@ spec:
           path: /
           backend:
             service:
-              name: kubernetes-dashboard
+              name: metrics-server
               port:
                 number: 443
