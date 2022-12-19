@@ -8,8 +8,8 @@ metadata:
 #    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
-  tls:
-    - secretName: k8s
+#  tls:
+#    - secretName: k8s
   rules:
     - host: k8s.int.kronshtadt.ru
       http:
