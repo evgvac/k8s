@@ -33,7 +33,6 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-#  type: LoadBalancer
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -41,7 +40,7 @@ metadata:
   name: adv-project
 spec:
   rules:
-    - host: k8s.int.kronshtadt.ru
+    - host: adv.int.kronshtadt.ru
       http:
         paths:
           - pathType: Prefix
