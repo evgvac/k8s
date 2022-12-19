@@ -40,7 +40,9 @@ metadata:
   name: adv-project
 spec:
   tls:
-    - secretName: adv
+    - hosts:
+        - adv.int.kronshtadt.ru
+      secretName: adv
   rules:
     - host: adv.int.kronshtadt.ru
       http:
