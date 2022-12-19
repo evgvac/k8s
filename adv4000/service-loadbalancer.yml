@@ -50,4 +50,4 @@ spec:
                 name: adv-project
                 port:
                   number: 80
-
+            path: /
