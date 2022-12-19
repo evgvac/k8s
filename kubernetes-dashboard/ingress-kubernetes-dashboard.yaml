@@ -9,9 +9,7 @@ metadata:
 #    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   tls:
-#    - hosts:
-#      - k8s.int.kronshtadt.ru
-      secretName: k8s
+  - secretName: k8s
   rules:
     - host: k8s.int.kronshtadt.ru
       http:
