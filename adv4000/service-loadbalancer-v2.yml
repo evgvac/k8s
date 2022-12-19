@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adv-project
+  name: adv-project-v2
   labels:
-    app.kubernetes.io/name: adv-project
+    app.kubernetes.io/name: adv-project-v2
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: adv-project
+      app.kubernetes.io/name: adv-project-v2
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: adv-project
+        app.kubernetes.io/name: adv-project-v2
     spec:
       containers:
-        - name: adv-project
+        - name: adv-project-v2
           image: adv4000/k8sphp:v2
           ports:
             - containerPort: 80
@@ -24,12 +24,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: adv-project
+  name: adv-project-v2
   labels:
-    app.kubernetes.io/name: adv-project
+    app.kubernetes.io/name: adv-project-v2
 spec:
   selector:
-    app.kubernetes.io/name: adv-project
+    app.kubernetes.io/name: adv-project-v2
   ports:
     - port: 80
       targetPort: 80
@@ -37,7 +37,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: adv-project
+  name: adv-project-v2
 spec:
 #  tls:
 #    - hosts:
@@ -50,7 +50,7 @@ spec:
           - pathType: Prefix
             backend:
               service:
-                name: adv-project
+                name: adv-project-v2
                 port:
                   number: 80
             path: /
