@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
       - k8s.int.kronshtadt.ru
-      secretName: tls-secret
+      secretName: k8s
   rules:
     - host: k8s.int.kronshtadt.ru
       http:
