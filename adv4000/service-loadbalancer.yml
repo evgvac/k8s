@@ -39,10 +39,10 @@ kind: Ingress
 metadata:
   name: adv-project
 spec:
-  tls:
-    - hosts:
-        - adv.int.kronshtadt.ru
-      secretName: adv
+#  tls:
+#    - hosts:
+#        - adv.int.kronshtadt.ru
+#      secretName: adv
   rules:
     - host: adv.int.kronshtadt.ru
       http:
