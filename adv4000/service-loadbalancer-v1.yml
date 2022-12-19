@@ -44,7 +44,7 @@ spec:
 #        - adv.int.kronshtadt.ru
 #      secretName: adv
   rules:
-    - host: adv.int.kronshtadt.ru
+    - host: adv1.int.kronshtadt.ru
       http:
         paths:
           - pathType: Prefix
