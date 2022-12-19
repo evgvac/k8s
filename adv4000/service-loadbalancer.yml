@@ -39,6 +39,8 @@ kind: Ingress
 metadata:
   name: adv-project
 spec:
+  tls:
+    - secretName: k8s
   rules:
     - host: adv.int.kronshtadt.ru
       http:
@@ -48,5 +50,5 @@ spec:
               service:
                 name: adv-project
                 port:
-                  number: 80
+                  number: 443
             path: /
