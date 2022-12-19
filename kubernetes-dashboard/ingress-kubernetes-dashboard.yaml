@@ -14,8 +14,8 @@ spec:
     - host: k8s.int.kronshtadt.ru
       http:
         paths:
-#        - path: /
-        - pathType: Prefix
+        - path: /
+          pathType: Prefix
           backend:
             service:
               name: kubernetes-dashboard
