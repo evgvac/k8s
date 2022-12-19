@@ -50,5 +50,5 @@ spec:
               service:
                 name: adv-project
                 port:
-                  number: 443
+                  number: 80
             path: /
