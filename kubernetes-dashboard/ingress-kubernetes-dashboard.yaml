@@ -26,7 +26,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kubernetes-dashboard
+  name: kubernetes-dashboard-test
 #  namespace: kubernetes-dashboard
 spec:
   tls:
