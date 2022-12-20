@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - k8s.int.kronshtadt.ru
+        - k8s.kronshtadt.ru
       secretName: k8s
   rules:
-    - host: k8s.int.kronshtadt.ru
+    - host: k8s.kronshtadt.ru
       http:
         paths:
         - pathType: Prefix
