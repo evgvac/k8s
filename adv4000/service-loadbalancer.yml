@@ -39,7 +39,6 @@ kind: Ingress
 metadata:
   name: adv-project
 spec:
-  ingressClassName: nginx
   tls:
   - hosts:
     - adv.kronshtadt.ru
