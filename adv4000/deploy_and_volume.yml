@@ -21,6 +21,14 @@ spec:
           image: adv4000/k8sphp:version2
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: image-store
+              mountPath: /mnt/test
+    volumes:
+      - name: adv4000-store
+        persistentVolumeClaim:
+          claimName: cephfs-pvc
+          readOnly: false
 
 ---
 apiVersion: autoscaling/v2
