@@ -22,7 +22,7 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: image-store
+            - name: adv4000-store
               mountPath: /mnt/test
     volumes:
       - name: adv4000-store
