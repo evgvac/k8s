@@ -8,7 +8,7 @@ metadata:
 spec:
   storageClassName: k8s-cephfs
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
