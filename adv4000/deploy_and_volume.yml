@@ -24,11 +24,11 @@ spec:
           volumeMounts:
             - name: adv4000-store
               mountPath: /mnt/test
-    volumes:
-      - name: adv4000-store
-        persistentVolumeClaim:
-          claimName: adv4000-pvc
-          readOnly: false
+      volumes:
+        - name: adv4000-store
+          persistentVolumeClaim:
+            claimName: adv4000-pvc
+            readOnly: false
 
 ---
 apiVersion: autoscaling/v2
