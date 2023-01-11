@@ -27,7 +27,7 @@ spec:
     volumes:
       - name: adv4000-store
         persistentVolumeClaim:
-          claimName: cephfs-pvc
+          claimName: adv4000-pvc
           readOnly: false
 
 ---
