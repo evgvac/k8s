@@ -1,45 +1,23 @@
-#apiVersion: apps/v1
-#kind: Deployment
-#metadata:
-#  name: astra
-#  namespace: default
-#spec:
-#  selector:
-#    matchLabels:
-#      app: astra
-#  replicas: 1
-#  template:
-#    metadata:
-#      labels:
-#        app: astra
-#    spec:
-#      containers:
-#      - name: astra
-#        images: dcksv-linux-repo.kronshtadt.ru:5000/astralinux-build-smolensk:v1
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-ewb-deployment-autoscaling-1
+  name: astra
+  namespace: default
   labels:
-    app: my-k8s-application
-    env: prod
-    owner: adminevgvac
+    app: astra-build
 spec:
   replicas: 1
   selector:
     matchLabels:
-      project: astra
+      app: astra
   template:
     metadata:
       labels:
-        project: astra
+        app: astra
     spec:
       containers:
       - name: astra
-        image: dcksv-linux-repo.kronshtadt.ru:5000/astralinux-build-smolensk:v1
-
----
+        images: dcksv-linux-repo.kronshtadt.ru:5000/astralinux-build-smolensk:v1
 
 #apiVersion: v1
 #kind: Service
