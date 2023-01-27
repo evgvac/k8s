@@ -17,7 +17,9 @@ spec:
     spec:
       containers:
       - name: astra
-        images: dcksv-linux-repo.kronshtadt.ru:5000/astralinux-build-smolensk:v1
+        image: dcksv-linux-repo.kronshtadt.ru:5000/astralinux-build-smolensk:v1
+        ports:
+            - containerPort: 80
 
 #apiVersion: v1
 #kind: Service
