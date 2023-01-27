@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: astra-build
+  name: astra-linux
   namespace: default
   labels:
-    app: astra-build
+    app: astra-linux
 spec:
-#  replicas: 1
+  replicas: 1
   selector:
     matchLabels:
-      app: astra-build
+      app: astra-linux
   template:
     metadata:
       labels:
-        app: astra-build
+        app: astra-linux
     spec:
       containers:
-      - name: astra-build
-        image: dcksv-linux-repo.kronshtadt.ru:5000/astra-buildlinux-build-smolensk:v1
+      - name: astra-linux
+        image: dcksv-linux-repo.kronshtadt.ru:5000/astra-linuxlinux-build-smolensk:v1
 #        ports:
 #            - containerPort: 80
 
 #apiVersion: v1
 #kind: Service
 #metadata:
-#  name: astra-build-service
+#  name: astra-linux-service
 #  namespace: default
 #  labels:
-#    app: astra-build
+#    app: astra-linux
 #spec:
 #  type: ClusterIP
 #  selector:
-#    app: astra-build
+#    app: astra-linux
 #  ports:
 #  - port: 80
 #    targetPort: 80
