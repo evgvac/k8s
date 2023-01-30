@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: astra-linux
-        image: dcksv-linux-repo.kronshtadt.ru:5000/astra-linuxlinux-build-smolensk:v1
+        image: dcksv-linux-repo.kronshtadt.ru:5000/my-busybox:v1
 #        ports:
 #            - containerPort: 80
 
