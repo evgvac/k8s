@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: astra-jenkins
+  name: astra-jenkins
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: astra-jenkins
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: astra-jenkins
+    spec:
+      containers:
+      - image: dcksv-linux-repo.kronshtadt.ru:5000/astra-jenkins:v1
+        name: astra-jenkins
+        resources: {}
+status: {}
