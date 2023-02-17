@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: adv-project
-          image: adv4000/k8sphp:version2
+          image: dcksv-linux-repo.kronshtadt.ru:5000/adv4000-k8sphp:version2
           ports:
             - containerPort: 80
           volumeMounts:
