@@ -13,19 +13,6 @@ spec:
     requests:
       storage: 1Gi
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: adv-project
-  labels:
-    app.kubernetes.io/name: adv-project
-spec:
-  selector:
-    app.kubernetes.io/name: adv-project
-  ports:
-    - port: 80
-      targetPort: 80
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -54,6 +41,19 @@ spec:
         - name: adv4000-storage
           persistentVolumeClaim:
             claimName: adv4000-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adv-project
+  labels:
+    app.kubernetes.io/name: adv-project
+spec:
+  selector:
+    app.kubernetes.io/name: adv-project
+  ports:
+    - port: 80
+      targetPort: 80
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
