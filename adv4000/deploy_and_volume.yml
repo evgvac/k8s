@@ -34,6 +34,13 @@ spec:
           image: dcksv-linux-repo.kronshtadt.ru:5000/adv4000-k8sphp:version2
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
           volumeMounts:
             - name: adv4000-storage
               mountPath: /var/lib/mysql
