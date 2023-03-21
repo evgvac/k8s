@@ -1,0 +1,27 @@
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: adv-project
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: adv-project
+  minReplicas: 1                      # Минимальное кол-во POD
+  maxReplicas: 4                      # Максимальное кол-во POD
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 90        # С помощью этой метрики контроллер HPA будет /
+                                      # поддерживать среднее использование модулей в целевом /
+                                      # масштабировании на уровне 90 %
+  - type: Resource                   # Поскольку у памяти статичное потребление, её не масштабируем
+    resource:
+      name: memory
+      target:
+        type: AverageValue
+        averageValue: 128Mi

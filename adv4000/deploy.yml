@@ -22,16 +22,16 @@ spec:
             - containerPort: 80
           resources:
             requests:
-              memory: "64Mi"
-              cpu: "250m"
+              memory: "32Mi"
+              cpu: "100m"
             limits:
-              memory: "128Mi"
-              cpu: "500m"
-          volumeMounts:
-            - name: adv4000-storage
-              mountPath: /var/lib/mysql
-      volumes:
-        - name: adv4000-storage
-          persistentVolumeClaim:
-            claimName: adv4000-pvc
+              memory: "64Mi"
+              cpu: "200m"
+#          volumeMounts:
+#            - name: adv4000-storage
+#              mountPath: /var/lib/mysql
+#      volumes:
+#        - name: adv4000-storage
+#          persistentVolumeClaim:
+#            claimName: adv4000-pvc
 
