@@ -9,7 +9,7 @@ spec:
     kind: Deployment
     name: adv-project
   minReplicas: 1                      # Минимальное кол-во POD
-  maxReplicas: 4                      # Максимальное кол-во POD
+  maxReplicas: 10                      # Максимальное кол-во POD
   metrics:
   - type: Resource
     resource:
