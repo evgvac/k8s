@@ -1,58 +1,37 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-ewb-deployment-autoscaling-1
+  name: adv-project
   labels:
-    app: my-k8s-application
-    env: prod
-    owner: adminevgvac
+    app.kubernetes.io/name: adv-project
 spec:
-  replicas: 29
+  replicas: 10
   selector:
     matchLabels:
-      project: mossad
+      app.kubernetes.io/name: adv-project
   template:
     metadata:
       labels:
-        project: mossad
+        app.kubernetes.io/name: adv-project
     spec:
       containers:
-        - name: mossad-web
+        - name: adv-project
           image: adv4000/k8sphp:version2
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: adv4000-storage
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: adv4000-storage
+          persistentVolumeClaim:
+            claimName: adv4000-pvc
 
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: my-autoscaling
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: my-ewb-deployment-autoscaling-1
-    minReplicas: 17
-    maxReplicas: 25
-    metrics:
-      - type: Resource
-        resource:
-          name: cpu
-          targetAverageUtilizaton: 70
-      - type: Resource
-        resource:
-          name: memory
-          targetAverageUtilization: 80
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: cephfs-pvc
-  namespace: kube-system
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: rook-cephfs
