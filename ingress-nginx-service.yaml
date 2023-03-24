@@ -8,8 +8,9 @@ metadata:
   name: ingress-nginx-controller
   namespace: ingress-nginx
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 10.33.64.249
+  type: NodePort
+#  type: LoadBalancer
+#  loadBalancerIP: 10.33.64.249
   ports:
     - name: http
       port: 80
