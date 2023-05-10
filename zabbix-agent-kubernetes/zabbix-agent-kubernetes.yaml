@@ -1,0 +1,62 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: zabbix-agent
+  namespace: >>>>EDIT_KUBERNETES_NAMESPACE<<<<
+  labels:
+    tier: monitoring
+    app: zabbix-agent
+    version: v1
+spec:
+  template:
+    metadata:
+      labels:
+        name: zabbix-agent
+    spec:
+      hostAliases:
+        - ip: >>>EDIT_ZABBIX_SERVER_IP<<<<
+          hostnames:
+            - >>>EDIT_ZABBIX_SERVER_HOSTNAME<<<<
+      hostPID: true
+      hostIPC: true
+      hostNetwork: false
+      containers:
+        - resources:
+            requests:
+              cpu: 0.10
+          securityContext:
+            privileged: true
+          env:
+            - name: ZBX_SERVER_HOST
+              value: >>>EDIT_ZABBIX_SERVER_HOSTNAME<<<<
+            - name: ZBX_HOSTNAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: ZABBIX_API_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: zabbix-api-secret
+                  key: ZABBIX_API_PASSWORD
+          image: pavolculka/zabbix-agent-kubernetes:2.0
+          imagePullPolicy: Always
+          name: zabbix-agent
+          volumeMounts:
+            - name: rootfs
+              mountPath: /rootfs
+            - name: run
+              mountPath: /var/run/
+          ports:
+            - containerPort: 10050
+              hostPort: 10050
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "/var/tmp/zabbix_disable_node.sh"]
+      volumes:
+        - name: rootfs
+          hostPath:
+              path: /
+        - name: run
+          hostPath:
+              path: /var/run/
