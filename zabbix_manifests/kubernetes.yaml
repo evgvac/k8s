@@ -103,10 +103,10 @@ spec:
           - containerPort: 8443
             name: web-https
           resources:
-           limits:
+            limits:
             cpu: 600m
             memory: 1024Mi
-           requests:
+            requests:
             cpu: 200m
             memory: 400Mi
           livenessProbe:
@@ -197,8 +197,8 @@ spec:
         app: zabbix
     spec:
       volumes:
-       - name: zabbix-snmptraps
-         emptyDir: {}
+        - name: zabbix-snmptraps
+          emptyDir: {}
       containers:
         - name: zabbix-server
           image: zabbix/zabbix-server-pgsql:alpine-6.2-latest
@@ -409,8 +409,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-     name: zabbix-java-gateway
-     app: zabbix
+      name: zabbix-java-gateway
+      app: zabbix
   template:
     metadata:
       labels:
@@ -457,8 +457,8 @@ metadata:
 spec:
   selector:
     matchLabels:
-     name: zabbix-web-service
-     app: zabbix
+      name: zabbix-web-service
+      app: zabbix
   template:
     metadata:
       labels:
@@ -470,10 +470,10 @@ spec:
           image: zabbix/zabbix-web-service:alpine-6.2-latest
           imagePullPolicy: IfNotPresent
           resources:
-           limits:
+            limits:
             cpu: 100m
             memory: 512Mi
-           requests:
+            requests:
             cpu: 100m
             memory: 512Mi
           ports:

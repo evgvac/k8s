@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: DaemonSet
 metadata:
   name: zabbix-agent
-  namespace: >>>>EDIT_KUBERNETES_NAMESPACE<<<<
+  namespace: zabbix-bft
   labels:
     tier: monitoring
     app: zabbix-agent
