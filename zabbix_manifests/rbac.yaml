@@ -28,10 +28,3 @@ roleRef:
   kind: Role
   name: zabbix-agent
   apiGroup: rbac.authorization.k8s.io
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: zabbix-agent
-  namespace: zabbix-bft
----

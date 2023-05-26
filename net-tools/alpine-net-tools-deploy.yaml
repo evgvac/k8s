@@ -1,0 +1,169 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine-net-tools
+  namespace: ecp
+  uid: 65d198b8-dea2-4862-ad56-e75664c7d241
+  resourceVersion: '388195792'
+  generation: 5
+  creationTimestamp: '2023-03-31T11:50:41Z'
+  labels:
+    app: alpine
+  annotations:
+    deployment.kubernetes.io/revision: '5'
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"alpine"},"name":"alpine-net-tools","namespace":"ecp"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"alpine"}},"template":{"metadata":{"labels":{"app":"alpine"}},"spec":{"containers":[{"command":["sh","-c","sleep
+      1h"],"image":"harbor.bft.local/library/alpine-curl-zip:1.3","name":"alpine-net-tools"}],"volumes":null}}}}
+  managedFields:
+    - manager: kubectl-client-side-apply
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-03-31T11:50:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:progressDeadlineSeconds: {}
+          f:replicas: {}
+          f:revisionHistoryLimit: {}
+          f:selector: {}
+          f:strategy:
+            f:rollingUpdate:
+              .: {}
+              f:maxSurge: {}
+              f:maxUnavailable: {}
+            f:type: {}
+          f:template:
+            f:metadata:
+              f:labels:
+                .: {}
+                f:app: {}
+            f:spec:
+              f:containers:
+                k:{"name":"alpine-net-tools"}:
+                  .: {}
+                  f:command: {}
+                  f:imagePullPolicy: {}
+                  f:name: {}
+                  f:resources: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+              f:dnsPolicy: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:terminationGracePeriodSeconds: {}
+    - manager: node-fetch
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-03-31T12:11:06Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:template:
+            f:spec:
+              f:containers:
+                k:{"name":"alpine-net-tools"}:
+                  f:image: {}
+                  f:resources:
+                    f:limits:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-05-16T08:48:08Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:deployment.kubernetes.io/revision: {}
+        f:status:
+          f:availableReplicas: {}
+          f:conditions:
+            .: {}
+            k:{"type":"Available"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Progressing"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:lastUpdateTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+          f:updatedReplicas: {}
+      subresource: status
+  selfLink: /apis/apps/v1/namespaces/ecp/deployments/alpine-net-tools
+status:
+  observedGeneration: 5
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2023-04-03T06:09:52Z'
+      lastTransitionTime: '2023-03-31T11:51:19Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "alpine-net-tools-794fdb796d" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2023-05-16T08:48:08Z'
+      lastTransitionTime: '2023-05-16T08:48:08Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alpine
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: alpine
+    spec:
+      containers:
+        - name: alpine-net-tools
+          image: harbor.bft.local/library/alpine-curl-zip:1.3
+          command:
+            - sh
+            - '-c'
+            - sleep 1h
+          resources:
+            limits:
+              cpu: 200m
+              memory: 384Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
